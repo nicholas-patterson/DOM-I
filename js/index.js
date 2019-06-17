@@ -127,3 +127,15 @@ contactP[2].textContent = siteContent.contact.email;
 
 let footer = document.querySelector("footer p");
 footer.textContent = siteContent.footer.copyright;
+
+//STRETCH
+
+const button = document.querySelector("button");
+const header = document.querySelector(".cta .cta-text h1");
+const navigation = document.querySelectorAll("header nav a");
+button.addEventListener("click", function() {
+  header.style.color = "crimson";
+  navigation.forEach(link => {
+    link.style.color = "crimson";
+  });
+});

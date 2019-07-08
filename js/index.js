@@ -51,6 +51,7 @@ const nav = document.querySelectorAll("nav a");
 
 nav.forEach((link, index) => {
   link.textContent = siteContent.nav[`nav-item-${index + 1}`];
+  link.style.color = "green";
 });
 
 // h1
@@ -141,3 +142,19 @@ address[2].textContent = siteContent.contact.email;
 const footer = document.querySelector(".container footer");
 
 footer.textContent = siteContent.footer.copyright;
+
+// Prepend new items to navigation
+
+const navigation = document.querySelector("header nav");
+
+// new items
+const newItem = document.createElement("a");
+const secondNewItem = document.createElement("a");
+newItem.style.color = "green";
+secondNewItem.style.color = "green";
+// adding text to new items
+newItem.textContent = "Directions";
+secondNewItem.textContent = "Our Blog";
+// appending items
+navigation.appendChild(newItem);
+navigation.prepend(secondNewItem);

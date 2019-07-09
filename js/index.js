@@ -46,96 +46,115 @@ const siteContent = {
 let logo = document.getElementById("logo-img");
 logo.setAttribute("src", siteContent["nav"]["img-src"]);
 
-// NAV SECTION
+// Navigation
+const nav = document.querySelectorAll("nav a");
 
-let nav = document.querySelectorAll("header nav a");
-nav[0].textContent = siteContent.nav["nav-item-1"];
-nav[1].textContent = siteContent.nav["nav-item-2"];
-nav[2].textContent = siteContent.nav["nav-item-3"];
-nav[3].textContent = siteContent.nav["nav-item-4"];
-nav[4].textContent = siteContent.nav["nav-item-5"];
-nav[5].textContent = siteContent.nav["nav-item-6"];
-
-// NAV TEXT GREEN
-
-let navColor = document.querySelectorAll("header nav a");
-navColor.forEach(link => {
+nav.forEach((link, index) => {
+  link.textContent = siteContent.nav[`nav-item-${index + 1}`];
   link.style.color = "green";
 });
 
-// ADD NEW LINKS TO NAV
+// h1
 
-let existingElement = document.querySelector("header nav");
-const link = document.createElement("a");
-link.textContent = "Blog";
-link.style.color = "green";
-existingElement.appendChild(link);
-const link2 = document.createElement("a");
-link2.textContent = "Directions";
-link2.style.color = "green";
-existingElement.appendChild(link2);
+const header = document.querySelector(".container .cta-text h1");
 
-// CTA SECTION
+header.textContent = siteContent.cta.h1;
 
-let headImage = document.getElementById("cta-img");
-headImage.setAttribute("src", siteContent.cta["img-src"]);
+// Button
 
-let ctah1 = document.querySelector("h1");
-ctah1.textContent = siteContent.cta.h1;
+const ctabutton = document.querySelector("button");
 
-let ctah1Button = document.querySelector("button");
-ctah1Button.textContent = siteContent.cta.button;
+ctabutton.textContent = siteContent.cta.button;
 
-// MAIN-CONTENT SECTION
+// Circular Image
 
-let topContentH4 = document.querySelectorAll(".main-content .top-content h4");
+const picture = document.querySelector(".container .cta #cta-img");
+
+picture.setAttribute("src", siteContent.cta["img-src"]);
+
+//TOP CONTENT HEADINGS
+
+const topContentH4 = document.querySelectorAll(
+  ".main-content .top-content .text-content h4"
+);
+
 topContentH4[0].textContent = siteContent["main-content"]["features-h4"];
 topContentH4[1].textContent = siteContent["main-content"]["about-h4"];
 
-let topContentP = document.querySelectorAll(".main-content .top-content p");
-topContentP[0].textContent = siteContent["main-content"]["features-content"];
-topContentP[1].textContent = siteContent["main-content"]["about-content"];
+// TOP CONTENT - CONTENT
 
-let bannerImg = document.querySelector("#middle-img");
-bannerImg.setAttribute("src", siteContent["main-content"]["middle-img-src"]);
-
-let bottomContentH4 = document.querySelectorAll(
-  ".bottom-content .text-content h4"
+const topContentDescription = document.querySelectorAll(
+  ".container .main-content .top-content .text-content p"
 );
+
+topContentDescription[0].textContent =
+  siteContent["main-content"]["features-content"];
+topContentDescription[1].textContent =
+  siteContent["main-content"]["about-content"];
+
+//MIDDLE IMAGE
+
+const middleImg = document.querySelector(
+  ".container .main-content #middle-img"
+);
+
+middleImg.setAttribute("src", siteContent["main-content"]["middle-img-src"]);
+
+// BOTTOM CONTENT HEADER
+
+bottomContentH4 = document.querySelectorAll(
+  ".container .main-content .bottom-content .text-content h4"
+);
+
 bottomContentH4[0].textContent = siteContent["main-content"]["services-h4"];
 bottomContentH4[1].textContent = siteContent["main-content"]["product-h4"];
 bottomContentH4[2].textContent = siteContent["main-content"]["vision-h4"];
 
-let bottomContentP = document.querySelectorAll(
-  ".bottom-content .text-content p"
+//BOTTOM CONTENT - CONTENT
+
+const bottomContentDescription = document.querySelectorAll(
+  ".container .main-content .bottom-content .text-content p"
 );
-bottomContentP[0].textContent = siteContent["main-content"]["services-content"];
-bottomContentP[1].textContent = siteContent["main-content"]["product-content"];
-bottomContentP[2].textContent = siteContent["main-content"]["vision-content"];
 
-//CONTACT SECTION
+bottomContentDescription[0].textContent =
+  siteContent["main-content"]["services-content"];
+bottomContentDescription[1].textContent =
+  siteContent["main-content"]["product-content"];
+bottomContentDescription[2].textContent =
+  siteContent["main-content"]["vision-content"];
 
-let contactH4 = document.querySelector(".contact h4");
+//Contact Information
+
+const contactH4 = document.querySelector(".container .contact h4");
+
 contactH4.textContent = siteContent.contact["contact-h4"];
 
-let contactP = document.querySelectorAll(".contact p");
-contactP[0].textContent = siteContent.contact.address;
-contactP[1].textContent = siteContent.contact.phone;
-contactP[2].textContent = siteContent.contact.email;
+//Contact address
 
-// FOOTER SECTION
+const address = document.querySelectorAll(".container .contact p");
 
-let footer = document.querySelector("footer p");
+address[0].textContent = siteContent.contact.address;
+address[1].textContent = siteContent.contact.phone;
+address[2].textContent = siteContent.contact.email;
+
+//Footer
+
+const footer = document.querySelector(".container footer");
+
 footer.textContent = siteContent.footer.copyright;
 
-//STRETCH
+// Prepend new items to navigation
 
-const button = document.querySelector("button");
-const header = document.querySelector(".cta .cta-text h1");
-const navigation = document.querySelectorAll("header nav a");
-button.addEventListener("click", function() {
-  header.style.color = "crimson";
-  navigation.forEach(link => {
-    link.style.color = "crimson";
-  });
-});
+const navigation = document.querySelector("header nav");
+
+// new items
+const newItem = document.createElement("a");
+const secondNewItem = document.createElement("a");
+newItem.style.color = "green";
+secondNewItem.style.color = "green";
+// adding text to new items
+newItem.textContent = "Directions";
+secondNewItem.textContent = "Our Blog";
+// appending items
+navigation.appendChild(newItem);
+navigation.prepend(secondNewItem);
